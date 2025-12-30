@@ -47,26 +47,29 @@
 }
 :root {
   --radius: 0.625rem;
-  --primary: oklch(0.55 0.18 260); 
+  --primary: oklch(0.55 0.18 260);
   --primary-foreground: oklch(0.98 0.01 260);
   --background: oklch(0.99 0.01 0);
   --foreground: oklch(0.25 0.02 0);
 
   --success: oklch(0.62 0.17 150);
-  --destructive: oklch(0.60 0.15 25);
-  
+  --destructive: oklch(0.6 0.15 25);
+
   --border: oklch(0.92 0.01 0);
   --input: oklch(0.92 0.01 0);
   --ring: oklch(0.55 0.18 260 / 0.5);
+  --accent: oklch(0.95 0.01 0);
+  --accent-foreground: oklch(0.25 0.02 0);
 }
 
 .dark {
   --background: oklch(0.18 0.02 260);
   --foreground: oklch(0.95 0.01 0);
-  
-  --primary: oklch(0.70 0.12 260);
+  --accent: oklch(0.25 0.02 260);
+  --accent-foreground: oklch(0.95 0.01 0);
+  --primary: oklch(0.7 0.12 260);
   --primary-foreground: oklch(0.18 0.02 260);
-  
+
   --card: oklch(0.22 0.02 260);
   --border: oklch(1 0 0 / 12%);
 }
@@ -170,5 +173,4 @@
     @apply text-sm font-medium font-mono text-primary;
     /* Ideal for API endpoints like '/auth/signup' [cite: 8] */
   }
-
 }
