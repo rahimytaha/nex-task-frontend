@@ -150,7 +150,7 @@
     @apply bg-background text-foreground;
   }
   h1 {
-    @apply text-4xl font-bold tracking-tight text-foreground mb-6;
+    @apply text-4xl font-bold tracking-tight text-foreground mb-4;
     /* Used for main views like 'NexTask API Dashboard'  */
   }
 
