@@ -146,4 +146,29 @@
   body {
     @apply bg-background text-foreground;
   }
+  h1 {
+    @apply text-4xl font-bold tracking-tight text-foreground mb-6;
+    /* Used for main views like 'NexTask API Dashboard'  */
+  }
+
+  h2 {
+    @apply text-3xl font-semibold tracking-tight text-foreground mt-10 mb-4;
+    /* Categorizing sections like Auth, Schedule, and Users [cite: 4, 9, 47] */
+  }
+
+  h3 {
+    @apply text-xl font-medium text-foreground mb-2;
+    /* Identifying specific DTOs like 'SigninDto' [cite: 64] */
+  }
+
+  p {
+    @apply text-base leading-relaxed text-muted-foreground;
+    /* Description text for TaskCheck control [cite: 42] */
+  }
+
+  span {
+    @apply text-sm font-medium font-mono text-primary;
+    /* Ideal for API endpoints like '/auth/signup' [cite: 8] */
+  }
+
 }
