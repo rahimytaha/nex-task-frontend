@@ -2,6 +2,8 @@
 
 import { Interceptor } from "@/app/_lib/interceptor";
 import { registerSchema } from "@/app/_lib/zod-schemas";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 import { z } from "zod";
 type State = {
   errors?: {
@@ -24,17 +26,19 @@ const RegisterAction = async (
     console.log(flatten.fieldErrors);
     return { errors: flatten.fieldErrors };
   }
+  const cookieStore = await cookies();
+
   const { conFirmPassword, ...finalData } = data;
-  const res = await Interceptor("/auth/signUp", {
+  const res = await Interceptor<{ token: string }>("/auth/signUp", {
     method: "POST",
     body: JSON.stringify(finalData),
   });
   console.log(res);
-  if (res.status!=201) {
-    console.log(data)
+  if (res.status != 201) {
+   cookieStore.set("access_token", res.data?.data?.token || "");
+    redirect("/dashboard");
   } else {
-    
+    return { message: "account could not create" };
   }
-  return { message: "successFull" };
 };
 export default RegisterAction;

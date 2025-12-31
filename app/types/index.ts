@@ -1,8 +1,9 @@
 export type TInterceptorResponse<T>={
-    data:{
+    data?:{
         success:boolean,
         message:string
         data?:T
     }
+    error?:string|string[]
     status:number
 }

@@ -18,7 +18,7 @@ const BASE_URL = "http://localhost:3000";
 export async function Interceptor<T>(
   url: string,
   options: RequestInit = {}
-): Promise<ApiResponse<T>> {
+): Promise<TInterceptorResponse<T>> {
   // خواندن توکن از کوکی http-only (امن‌ترین روش)
   const cookieStore = await cookies();
   const accessToken = cookieStore.get("access_token")?.value;
