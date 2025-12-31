@@ -1,7 +1,7 @@
 import Image from "next/image";
 import fullLogoPng from "@/public/logo/fullLogo.png";
 import Link from "next/link";
-import { CalendarDays, User } from "lucide-react";
+import { CalendarDays, LayoutDashboard, User } from "lucide-react";
 import SideBarItem from "./item";
 import { ReactNode } from "react";
 type Props = {};
@@ -13,6 +13,7 @@ interface IItems {
 const SideBar = (props: Props) => {
   const items :IItems[]= [
     {link:"/dashboard",text:"Profile",icon:<User />},
+    {link:"/dashboard",text:"Dashboard",icon:<LayoutDashboard />},
     {link:"/schedule",text:"Schedules",icon:<CalendarDays/>}
   ];
   return (

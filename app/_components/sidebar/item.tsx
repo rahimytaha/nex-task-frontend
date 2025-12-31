@@ -18,7 +18,7 @@ const SideBarItem = ({ icon, link, text }: Props) => {
   return (
     <Link
       href={link}
-      className={`bg-accent  flex gap-2 text-sm items-center border border-sidebar-border   py-2 px-3 my-3  rounded-[10px] font-medium ${
+      className={`bg-accent duration-200   flex gap-2 text-sm items-center border border-sidebar-border   py-2 px-3 my-3  rounded-[10px] font-medium ${
         checkActice()
           ? "bg-primary text-primary-foreground "
           : " hover:text-accent-foreground   "
