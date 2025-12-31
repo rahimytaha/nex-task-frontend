@@ -1,40 +1,70 @@
-"use client"
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator,BreadcrumbPage } from "@/components/ui/breadcrumb"
-import { Slash } from "lucide-react"
-import { usePathname } from "next/navigation"
-
+"use client";
+import { RouteName } from "@/app/_config/routeName";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { Fragment, useEffect, useState } from "react";
+interface IPath {
+  path: string;
+  name: string;
+}
 const CustomBreadcrumb = () => {
-    const pathName = usePathname()
-    const convertPathNane = ()=>{
-        let pathList=pathName.split("/")
-
-        console.log(pathList)
-    }
-    convertPathNane()
+  const pathName = usePathname();
+  const [pathList, setPathList] = useState<IPath[] | undefined>(undefined);
+  const convertPathNane = () => {
+    let pathList = pathName.split("/");
+    const list = pathList.map((el) => {
+      return {
+        path: `/${el}`,
+        name: RouteName.find((e) => e.path == el)?.name || el,
+      };
+    });
+    setPathList(list);
+  };
+  useEffect(() => {
+    convertPathNane();
+  }, [pathName]);
   return (
     <div className="flex items-center gap-4">
-            <Breadcrumb>
-              <BreadcrumbList>
-                <BreadcrumbItem>
-                  <BreadcrumbLink
-                    href="/dashboard"
-                    className="text-muted-foreground hover:text-foreground"
-                  >
-                    Dashboard
-                  </BreadcrumbLink>
-                </BreadcrumbItem>
-                <BreadcrumbSeparator>
-                  <Slash className="size-3" />
-                </BreadcrumbSeparator>
-                <BreadcrumbItem>
-                  <BreadcrumbPage className="font-semibold text-foreground">
-                    Schedules
-                  </BreadcrumbPage>
-                </BreadcrumbItem>
-              </BreadcrumbList>
-            </Breadcrumb>
-          </div>
-  )
-}
+      <Breadcrumb>
+        <BreadcrumbList>
+          {pathList?.map((el, index) => (
+            <Fragment key={index} >
+              {index != 0 && <BreadcrumbSeparator />}
 
-export default CustomBreadcrumb
+              <BreadcrumbItem>
+                <BreadcrumbLink asChild>
+                  <Link href={el.path}>{el.name}</Link>
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+            </Fragment>
+          ))}
+          {/* <BreadcrumbItem>
+            <BreadcrumbLink
+              href="/dashboard"
+              className="text-muted-foreground hover:text-foreground"
+            >
+              Dashboard
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator>
+            <Slash className="size-3" />
+          </BreadcrumbSeparator>
+          <BreadcrumbItem>
+            <BreadcrumbPage className="font-semibold text-foreground">
+              Schedules
+            </BreadcrumbPage>
+          </BreadcrumbItem> */}
+        </BreadcrumbList>
+      </Breadcrumb>
+    </div>
+  );
+};
+
+export default CustomBreadcrumb;
