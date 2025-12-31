@@ -72,13 +72,14 @@ export async function Interceptor<T>(
     }
 
     // خطای 401: توکن نامعتبر یا منقضی شده → کاربر رو به لاگین ببر
-    if (response.status === 401) {
-      // پاک کردن کوکی (اختیاری، اگر بخوای)
-      cookieStore.delete("access_token");
+    // if (response.status === 401) {
+    //   // پاک کردن کوکی (اختیاری، اگر بخوای)
+    //   cookieStore.delete("access_token");
 
-      redirect("/login?error=session_expired");
-    }
+    //   redirect("/login?error=session_expired");
+    // }
 
+    console.log(response)
     // سایر خطاها (400, 403, 500 و ...)
     const errorMessage = data?.message || data?.error || "error";
 
