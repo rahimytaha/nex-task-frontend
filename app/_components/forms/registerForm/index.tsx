@@ -1,9 +1,9 @@
 "use client";
-import { Link } from "lucide-react";
 import CustomInput from "../../common/customInput";
 import { Button } from "@/components/ui/button";
 import RegisterAction from "./action";
 import { useActionState } from "react";
+import Link from "next/link";
 
 const RegisterForm = () => {
   const [state, formAction] = useActionState(RegisterAction, {});

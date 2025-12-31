@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { email, z } from "zod";
 export const passwordSchema = z
   .string()
   .min(8)
@@ -7,12 +7,17 @@ export const passwordSchema = z
 
 export const registerSchema = z
   .object({
-    // email: z.email().min(3),
-    // password: passwordSchema,
-    // conFirmPassword: passwordSchema,
-    // name: z.string().min(3),
+    email: z.email().min(3),
+    password: passwordSchema,
+    conFirmPassword: passwordSchema,
+    name: z.string().min(3),
   })
-  // .refine((data) => data.password === data.conFirmPassword, {
-  //   path: ["confirmPassword"],
-  //   message:"password doesn't match "
-  // });
+  .refine((data) => data.password === data.conFirmPassword, {
+    path: ["confirmPassword"],
+    message:"password doesn't match "
+  });
+
+export const loginSchema =z.object({
+  email:z.email(),
+  password:passwordSchema
+})

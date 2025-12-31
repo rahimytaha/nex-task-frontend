@@ -23,7 +23,6 @@ const RegisterAction = async (
   const validate = registerSchema.safeParse(data);
   if (!validate.success) {
     const flatten = z.flattenError(validate.error);
-    console.log(flatten.fieldErrors);
     return { errors: flatten.fieldErrors };
   }
   const cookieStore = await cookies();
@@ -34,7 +33,7 @@ const RegisterAction = async (
     body: JSON.stringify(finalData),
   });
   console.log(res);
-  if (res.status != 201) {
+  if (res.status == 201) {
    cookieStore.set("access_token", res.data?.data?.token || "");
     redirect("/dashboard");
   } else {
