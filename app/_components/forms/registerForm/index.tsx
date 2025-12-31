@@ -6,13 +6,13 @@ import RegisterAction from "./action";
 import { useActionState } from "react";
 
 const RegisterForm = () => {
-  const [state, formAction] = useActionState(RegisterAction, null);
+  const [state, formAction] = useActionState(RegisterAction, {});
   return (
     <form action={formAction}>
       <CustomInput state={state} name="name" text="Name" />
       <CustomInput state={state} name="email" text="Email" />
       <CustomInput  state={state} name="password" type="password" text="Password" />
-      <CustomInput
+      <CustomInput  
         state={state}
         name="conFirmPassword"
         type="password"

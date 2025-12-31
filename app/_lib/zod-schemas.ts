@@ -2,8 +2,8 @@ import { z } from "zod";
 export const passwordSchema = z
   .string()
   .min(8)
-  .refine((val) => /[a-z]/.test(val))
-  .refine((val) => /[9-9]/.test(val));
+  .refine((val) => /[a-z]/.test(val),"password should have small letter")
+  .refine((val) => /[0-9]/.test(val),"password should have  number");
 
 export const registerSchema = z
   .object({
@@ -14,4 +14,5 @@ export const registerSchema = z
   })
   .refine((data) => data.password === data.conFirmPassword, {
     path: ["confirmPassword"],
+    message:"password doesn't match "
   });

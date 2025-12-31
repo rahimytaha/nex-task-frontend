@@ -9,7 +9,7 @@ const page = async () => {
       <div className="bg-card shadow-sm  border border-border  rounded-[14px] p-8     ">
         <h1 className="text-3xl font-bold  ">Create an Account</h1>
         <p className="mb-2 ">join NexTask to manage your schedules</p>
-        <RegisterForm />
+        <RegisterForm  />
       </div>
     </div>
   );
