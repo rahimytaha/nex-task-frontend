@@ -8,7 +8,7 @@ import { useActionState } from "react";
 const RegisterForm = () => {
   const [state, formAction] = useActionState(RegisterAction, {});
   return (
-    <form action={formAction}>
+    <form action={formAction} key={JSON.stringify(state)}>
       <CustomInput state={state} name="name" text="Name" />
       <CustomInput state={state} name="email" text="Email" />
       <CustomInput  state={state} name="password" type="password" text="Password" />
