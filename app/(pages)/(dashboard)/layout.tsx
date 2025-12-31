@@ -8,7 +8,7 @@ export const metadata = {
   title: "Dashboard | NexTask",
   description: "Manage your tasks and schedules efficiently",
 };
-const layout = () => {
+const layout = ({children}) => {
   return (
     <div className="grid grid-cols-[280px_1fr] p-8 gap-6   h-screen    ">
       <SideBar />
@@ -34,6 +34,7 @@ const layout = () => {
             </Avatar>
           </div>
         </div>
+        {children}
       </div>
     </div>
   );
