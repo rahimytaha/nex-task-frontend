@@ -46,6 +46,10 @@
   --radius-4xl: calc(var(--radius) + 16px);
 }
 :root {
+  --sidebar: oklch(0.96 0.005 0); 
+  --sidebar-foreground: oklch(0.25 0.02 0);
+  --sidebar-accent: oklch(0.92 0.01 0);
+  --sidebar-border: oklch(0.92 0.01 0);
   --radius: 0.625rem;
   --primary: oklch(0.55 0.18 260);
   --primary-foreground: oklch(0.98 0.01 260);
@@ -72,6 +76,10 @@
 }
 
 .dark {
+  --sidebar: oklch(0.15 0.02 260); 
+  --sidebar-foreground: oklch(0.95 0.01 0);
+  --sidebar-accent: oklch(0.22 0.02 260);
+  --sidebar-border: oklch(1 0 0 / 8%);
   --background: oklch(0.18 0.02 260);
   --foreground: oklch(0.95 0.01 0);
   --accent: oklch(0.25 0.02 260);
