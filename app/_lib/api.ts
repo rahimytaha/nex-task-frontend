@@ -1,5 +1,6 @@
 'use server'
 import { TScheduleType } from "../_types";
+import { TInterceptorResponse } from "../types";
 import { Interceptor } from "./interceptor";
 
 export const GetMySchedule = async (): Promise<TScheduleType[]> => {
@@ -9,3 +10,8 @@ export const GetMySchedule = async (): Promise<TScheduleType[]> => {
   }
   return []
 };
+export const DeleteScheduleApi = async (id:number):Promise<TInterceptorResponse<Boolean>>=>{
+  const api = await Interceptor<Boolean>(`/schedule/delete/${id}`,{method:"DELETE"});
+  return api
+  
+}

@@ -85,6 +85,7 @@ export async function Interceptor<T>(
 
     return {
       error: errorMessage,
+      data,
       status: response.status,
     };
   } catch (error) {
