@@ -29,7 +29,7 @@ const Table = ({ data }: Props) => {
               <Link href={`/schedule/${rows.id}`}>
                 <Info className="opacity-70   hover:opacity-100 duration-100" size={26} />
               </Link>
-              <DeleteSchedule/>
+              <DeleteSchedule id={rows.id}/>
             </div>
           ),
         },

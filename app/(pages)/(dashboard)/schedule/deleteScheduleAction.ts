@@ -6,15 +6,11 @@ type ActionState = {
   success?: boolean;
   message?: string;
 };
-export const DeleteScheduleAction = async (
-  prevState: ActionState,
-  formData: FormData
-): Promise<ActionState> => {
-  const id = Number(formData.get("id"));
-  const api = await DeleteScheduleApi(55);
+export const DeleteScheduleAction = async (id: number) => {
+  const api = await DeleteScheduleApi(id);
   if (api.status == 200) {
     revalidatePath("/schedule");
-    return {success:true,message:"Schedule Deleted successfully"}
+    return { success: true, message: "Schedule Deleted successfully" };
   }
-  return {success:false,message:api.data?.message};
+  return Error(api.data?.message);
 };
