@@ -1,4 +1,4 @@
-import CreateScheduleForm from "@/app/_components/forms/createScheduleForm";
+import UpdateScheduleForm from "@/app/_components/forms/updateScheduleForm";
 import { TScheduleType } from "@/app/_types";
 import {
   Sheet,
@@ -8,13 +8,14 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Bolt } from "lucide-react";
-import  { useState } from "react";
+import { useState } from "react";
 
 type Props = {
-    data:TScheduleType
+  data: TScheduleType;
+  opUpdate: (val: TScheduleType) => void;
 };
 
-const EditSchedule = ({data}: Props) => {
+const EditSchedule = ({ data, opUpdate }: Props) => {
   const [open, setOpen] = useState<boolean>(false);
   return (
     <Sheet open={open} onOpenChange={setOpen}>
@@ -28,7 +29,11 @@ const EditSchedule = ({data}: Props) => {
         <SheetHeader>
           <SheetTitle>Update Schedule</SheetTitle>
         </SheetHeader>
-        <CreateScheduleForm onCreate={alert} setOpen={(arg) => setOpen(arg)} />
+        <UpdateScheduleForm
+          opUpdate={opUpdate}
+          data={data}
+          setOpen={(arg) => setOpen(arg)}
+        />
       </SheetContent>
     </Sheet>
   );

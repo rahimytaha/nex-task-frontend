@@ -22,7 +22,9 @@ const Table = ({ data }: Props) => {
   return (
     <Fragment>
       <div className="mb-3 flex justify-between mt-16 ">
-        <CreateSchedule onCreate={(val)=>addOptimistic({payload:val,type:"create"})} />
+        <CreateSchedule
+          onCreate={(val) => addOptimistic({ payload: val, type: "create" })}
+        />
         <Button className=" cursor-pointer " variant={"secondary"}>
           Filter
         </Button>
@@ -55,7 +57,12 @@ const Table = ({ data }: Props) => {
                   }
                   id={rows.id}
                 />
-                <EditSchedule data={rows} />
+                <EditSchedule
+                  opUpdate={(val: TScheduleType) =>
+                    addOptimistic({ payload: val, type: "update" })
+                  }
+                  data={rows}
+                />
               </div>
             ),
           },

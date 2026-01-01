@@ -1,4 +1,4 @@
-"use server"
+"use server";
 import { CreateScheduleApi } from "@/app/_lib/api";
 import { CreateScheduleSchema } from "@/app/_lib/zod-schemas";
 import { TScheduleCreareType } from "@/app/_types";
@@ -26,10 +26,9 @@ export const CreateScheduleAction = async (
       errors: z.flattenError(validate.error).fieldErrors,
     };
   }
-//   const { description, name } = data;
   const api = await CreateScheduleApi({ description, name });
-  if (api.status==201) {
-    revalidatePath("/schedule")
+  if (api.status == 201) {
+    revalidatePath("/schedule");
   }
   return { success: true };
 };

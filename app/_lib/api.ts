@@ -27,3 +27,13 @@ export const CreateScheduleApi = async (
   });
   return api;
 };
+
+export const UpdateScheduleApi = async (
+  data: TScheduleType
+): Promise<TInterceptorResponse<Boolean>> => {
+  const api = await Interceptor<Boolean>(`/schedule/update/${data.id}`, {
+    method: "PUT",
+    body: JSON.stringify({name:data.name,description:data.description}),
+  });
+  return api;
+};
