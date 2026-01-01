@@ -2,8 +2,8 @@ import { email, z } from "zod";
 export const passwordSchema = z
   .string()
   .min(8)
-  .refine((val) => /[a-z]/.test(val),"password should have small letter")
-  .refine((val) => /[0-9]/.test(val),"password should have  number");
+  .refine((val) => /[a-z]/.test(val), "password should have small letter")
+  .refine((val) => /[0-9]/.test(val), "password should have  number");
 
 export const registerSchema = z
   .object({
@@ -14,10 +14,14 @@ export const registerSchema = z
   })
   .refine((data) => data.password === data.conFirmPassword, {
     path: ["confirmPassword"],
-    message:"password doesn't match "
+    message: "password doesn't match ",
   });
 
-export const loginSchema =z.object({
-  email:z.email(),
-  password:passwordSchema
-})
+export const loginSchema = z.object({
+  email: z.email(),
+  password: passwordSchema,
+});
+export const CreateScheduleSchema = z.object({
+  name: z.string().min(5).max(50),
+  description: z.string().max(50),
+});

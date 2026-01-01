@@ -21,6 +21,7 @@ const LoginAction = async (prevState:State,formData:FormData):Promise<State>=>{
 
     if (!validate.success) {
         const flatten=z.flattenError(validate.error)
+
         return {errors:flatten.fieldErrors}
     }
     const {email,password}=data
