@@ -10,9 +10,9 @@ const Schedule = async () => {
   const data = await GetMySchedule();
   return (
     <div>
-      <div>
+      {/* <div>
         <AnalyticCard/>
-      </div>
+      </div> */}
       <div className="mb-3 flex justify-between mt-16 ">
         <CreateSchedule />
         <Button className=" cursor-pointer " variant={"secondary"}>Filter</Button>

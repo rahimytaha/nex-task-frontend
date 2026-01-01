@@ -1,5 +1,4 @@
 "use client";
-import CustomInput from "@/app/_components/common/customInput";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -8,21 +7,12 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { useActionState, useEffect, useState } from "react";
-import { CreateScheduleAction } from "./createScheduleAction";
-import { toast } from "sonner";
+import CreateScheduleForm from "@/app/_components/forms/createScheduleForm";
+import { useState } from "react";
 
 const CreateSchedule = () => {
-  const [state, formAction,isPending] = useActionState(CreateScheduleAction,{});
-  const [open, setOpen] = useState(false);
-  useEffect(() => {
-  if (state.success) {
-    toast.success("Schedule created!");
-    setOpen(false);
-  } else if (state.errors) {
-    toast.error("Please fix errors");
-  }
-}, [state]);
+  const [open, setOpen] = useState<boolean>(false);
+
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
@@ -32,11 +22,7 @@ const CreateSchedule = () => {
         <SheetHeader>
           <SheetTitle>Create Schedule</SheetTitle>
         </SheetHeader>
-        <form action={formAction} className="mx-2  ">
-          <CustomInput name="name" text="Schedule Name" state={state}  />
-          <CustomInput name="description" text="Schedule Description" state={state} />
-          <Button className="mx-auto block " disabled={isPending}>{isPending?"Creating...":"Create Schedule"}</Button>
-        </form>
+        <CreateScheduleForm setOpen={(arg)=>setOpen(arg)}/>
       </SheetContent>
     </Sheet>
   );
