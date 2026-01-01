@@ -22,7 +22,7 @@ const Table = ({ data }: Props) => {
   return (
     <Fragment>
       <div className="mb-3 flex justify-between mt-16 ">
-        <CreateSchedule onCreate={alert} />
+        <CreateSchedule onCreate={(val)=>addOptimistic({payload:val,type:"create"})} />
         <Button className=" cursor-pointer " variant={"secondary"}>
           Filter
         </Button>
