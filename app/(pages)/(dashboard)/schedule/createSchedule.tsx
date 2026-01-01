@@ -26,7 +26,7 @@ const CreateSchedule = () => {
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
-        <Button variant="outline">Open</Button>
+        <Button variant="default" className="cursor-pointer" >Create Schedule</Button>
       </SheetTrigger>
       <SheetContent>
         <SheetHeader>
