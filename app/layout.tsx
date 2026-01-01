@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
-import {  Inter } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
+import { Toaster } from "sonner";
+import { CircleCheckIcon, InfoIcon, Loader2Icon, OctagonXIcon, TriangleAlertIcon } from "lucide-react";
 
 const InterFont = Inter({
   variable: "--font-inter",
-  preload:true,
+  preload: true,
   subsets: ["latin"],
 });
 
@@ -20,10 +22,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body
-        className={`${InterFont.className}    antialiased`}
-      >
+      <body className={`${InterFont.className}    antialiased`}>
         {children}
+        <Toaster
+        position="top-center"
+          icons={{
+            success: <CircleCheckIcon className="size-5" />,
+            info: <InfoIcon className="size-5" />,
+            warning: <TriangleAlertIcon className="size-5" />,
+            error: <OctagonXIcon className="size-5" />,
+            loading: <Loader2Icon className="size-5 animate-spin" />,
+          }}
+          theme="system"
+        />
       </body>
     </html>
   );

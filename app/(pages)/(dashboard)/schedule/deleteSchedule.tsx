@@ -2,11 +2,16 @@
 import { CircleX } from "lucide-react";
 import { DeleteScheduleAction } from "./deleteScheduleAction";
 import { useActionState, useEffect } from "react";
+import { toast } from "sonner";
 
 const DeleteSchedule = () => {
   const [state, formAction] = useActionState(DeleteScheduleAction, {});
   useEffect(() => {
-
+    if (state.success === true) {
+      toast.success(state.message);
+    } else if (state.success === false) {
+      toast.error(state.message);
+    }
   }, [state]);
   return (
     <form action={formAction}>
