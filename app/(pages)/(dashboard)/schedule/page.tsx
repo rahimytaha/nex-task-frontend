@@ -1,15 +1,16 @@
-import CustomTable from '@/app/_components/customTable'
-import { GetMySchedule } from '@/app/_lib/api'
-import React from 'react'
-
-const Schedule = async() => {
-  const data=await GetMySchedule()
-  console.log(data)
+import CustomTable from "@/app/_components/customTable";
+import { GetMySchedule } from "@/app/_lib/api";
+import { Checkbox } from "@/components/ui/checkbox";
+import React from "react";
+import Table from "./table";
+const Schedule = async () => {
+  const data = await GetMySchedule();
+  console.log(data);
   return (
     <div>
-      <CustomTable/>
+      <Table data={data} />
     </div>
-  )
-}
+  );
+};
 
-export default Schedule
+export default Schedule;

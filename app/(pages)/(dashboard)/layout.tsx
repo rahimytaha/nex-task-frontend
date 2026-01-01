@@ -13,7 +13,7 @@ const layout = ({children}) => {
     <div className="grid grid-cols-[280px_1fr] p-8 gap-6   h-screen    ">
       <SideBar />
       <div>
-        <div className="flex mt-3 items-center justify-between w-full">
+        <div className="flex my-3 items-center justify-between w-full">
           <CustomBreadcrumb />
 
           <div className="flex items-center gap-4">
