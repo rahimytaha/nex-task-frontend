@@ -23,7 +23,7 @@ const CreateSchedule = ({onCreate}:{onCreate:(payload:TScheduleCreareType)=>void
         <SheetHeader>
           <SheetTitle>Create Schedule</SheetTitle>
         </SheetHeader>
-        <CreateScheduleForm setOpen={(arg)=>setOpen(arg)}/>
+        <CreateScheduleForm onCreate={alert} setOpen={(arg)=>setOpen(arg)}/>
       </SheetContent>
     </Sheet>
   );

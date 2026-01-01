@@ -8,6 +8,7 @@ import { Fragment, useOptimistic } from "react";
 import { OptimisticAction } from "./optimisticAction";
 import CreateSchedule from "./createSchedule";
 import { Button } from "@/components/ui/button";
+import EditSchedule from "./editSchedule";
 
 type Props = {
   data: TScheduleType[];
@@ -21,7 +22,7 @@ const Table = ({ data }: Props) => {
   return (
     <Fragment>
       <div className="mb-3 flex justify-between mt-16 ">
-        <CreateSchedule />
+        <CreateSchedule onCreate={alert} />
         <Button className=" cursor-pointer " variant={"secondary"}>
           Filter
         </Button>
@@ -54,6 +55,7 @@ const Table = ({ data }: Props) => {
                   }
                   id={rows.id}
                 />
+                <EditSchedule data={rows} />
               </div>
             ),
           },
