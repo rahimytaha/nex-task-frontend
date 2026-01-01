@@ -4,12 +4,13 @@ import { CircleX } from "lucide-react";
 import { useTransition } from "react";
 import { DeleteScheduleAction } from "./deleteScheduleAction";
 
-const DeleteSchedule = ({ id }: { id: number }) => {
+const DeleteSchedule = ({ id ,onDelete}: { id: number,onDelete:()=>void }) => {
   const [isPending, startTransition] = useTransition();
 
   const handleDelete = () => {
     if (!isPending) {
       startTransition(() => {
+        onDelete()
         toast.promise(DeleteScheduleAction(id), {
           loading: "Deleting schedule...",
           success: (data: any) =>

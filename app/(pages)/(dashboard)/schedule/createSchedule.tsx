@@ -9,8 +9,9 @@ import {
 } from "@/components/ui/sheet";
 import CreateScheduleForm from "@/app/_components/forms/createScheduleForm";
 import { useState } from "react";
+import { TScheduleCreareType } from "@/app/_types";
 
-const CreateSchedule = () => {
+const CreateSchedule = ({onCreate}:{onCreate:(payload:TScheduleCreareType)=>void}) => {
   const [open, setOpen] = useState<boolean>(false);
 
   return (
