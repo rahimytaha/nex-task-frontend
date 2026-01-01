@@ -1,17 +1,18 @@
 "use client";
 import CustomTable from "@/app/_components/customTable";
 import { TScheduleType } from "@/app/_types";
-import { Checkbox } from "@radix-ui/react-checkbox";
-import { Eye, Info } from "lucide-react";
+import {  Info } from "lucide-react";
 import Link from "next/link";
-import React, { Fragment } from "react";
 import DeleteSchedule from "./deleteSchedule";
+import { useOptimistic } from "react";
+import { OptimisticAction } from "./optimisticAction";
 
 type Props = {
   data: TScheduleType[];
 };
 
 const Table = ({ data }: Props) => {
+  const [optimisticSchedules,addOptimistic]=useOptimistic(data,OptimisticAction)
   return (
     <CustomTable
       data={data}
