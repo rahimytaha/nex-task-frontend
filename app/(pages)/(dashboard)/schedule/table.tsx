@@ -17,9 +17,9 @@ const Table = ({ data }: Props) => {
       data={data}
       columns={[
         { header: "Id", key: "id" },
-        { header: "Name", key: "name" },
-        { header: "Description", key: "description" },
-        { header: "Time", key: "time" },
+        { header: "Name", key: "name"},
+        { header: "Description", key: "description" ,render:(val)=>val !=""?val :"Not Set" },
+        { header: "Time", key: "time",render:(val)=>val||"Not Set"  },
         {
           key: "actions" as keyof TScheduleType,
           header: "Action",

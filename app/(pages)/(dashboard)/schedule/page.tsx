@@ -5,10 +5,14 @@ import React from "react";
 import Table from "./table";
 import CreateSchedule from "./createSchedule";
 import { Button } from "@/components/ui/button";
+import AnalyticCard from "@/app/_components/analyticCard";
 const Schedule = async () => {
   const data = await GetMySchedule();
   return (
     <div>
+      <div>
+        <AnalyticCard/>
+      </div>
       <div className="mb-3 flex justify-between mt-16 ">
         <CreateSchedule />
         <Button className=" cursor-pointer " variant={"secondary"}>Filter</Button>
