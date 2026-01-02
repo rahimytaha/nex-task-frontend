@@ -1,5 +1,6 @@
 // components/SimpleDynamicTable.tsx
 
+import { Skeleton } from '@/components/ui/skeleton';
 import {
   Table,
   TableBody,
@@ -16,28 +17,28 @@ type Column<T> = {
 };
 
 type SimpleDynamicTableProps<T> = {
-  data: T[];
+  data: T[]|undefined;
   columns: Column<T>[];
 };
 
-export default function SimpleDynamicTable<T>({ data, columns }: SimpleDynamicTableProps<T>) {
+export default function CustomTable<T>({ data, columns }: SimpleDynamicTableProps<T>) {
   return (
     <div className="rounded-md border">
       <Table>
         <TableHeader>
           <TableRow>
             {columns.map((col) => (
-              <TableHead key={String(col.key)}>{col.header}</TableHead>
+              <TableHead  key={String(col.key)}>{col.header}</TableHead>
             ))}
           </TableRow>
         </TableHeader>
 
         <TableBody>
-          {data.length > 0 ? (
+          {data?data.length > 0 ? (
             data.map((row, rowIndex) => (
               <TableRow key={rowIndex}>
                 {columns.map((col) => (
-                  <TableCell key={String(col.key)}>
+                  <TableCell className='min-w-16  ' key={String(col.key)}>
                     {col.render
                       ? col.render(row[col.key], row)
                       : String(row[col.key])}
@@ -51,7 +52,13 @@ export default function SimpleDynamicTable<T>({ data, columns }: SimpleDynamicTa
                 NO DATA
               </TableCell>
             </TableRow>
-          )}
+          ):[...Array(5)].map((el,rowIndex)=><TableRow key={rowIndex}>
+                {columns.map((col) => (
+                  <TableCell key={String(col.key)}>
+                    <Skeleton className='w-16    h-5 '/>
+                  </TableCell>
+                ))}
+              </TableRow>)}
         </TableBody>
       </Table>
     </div>

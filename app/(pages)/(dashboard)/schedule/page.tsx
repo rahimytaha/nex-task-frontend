@@ -5,6 +5,7 @@ import Table from "./table";
 
 const Schedule = async () => {
   const data = await GetMySchedule();
+
   return (
  
       
