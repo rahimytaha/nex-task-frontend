@@ -31,8 +31,8 @@ const Table = ({ data }: Props) => {
       <CustomTable
         data={optimisticSchedules}
         columns={[
-          { header: "Id", key: "id" },
-          { header: "Name", key: "name" },
+          { header: "Id", key: "id",sortable:true },
+          { header: "Name", key: "name" ,sortable:true},
           {
             header: "Description",
             key: "description",
