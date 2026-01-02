@@ -2,8 +2,13 @@ import { GetMySchedule } from "@/app/_lib/api";
 
 import Table from "./table";
 
-const Schedule = async () => {
-  const data = await GetMySchedule();
+const Schedule = async ({
+  searchParams,
+}: {
+  searchParams: Promise<Record<string, string>>;
+}) => {
+  const queries = await searchParams;
+  const data = await GetMySchedule(queries);
 
   return <Table data={data} />;
 };

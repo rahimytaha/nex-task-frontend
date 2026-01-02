@@ -11,18 +11,31 @@ export type ApiResponse<T = any> = {
   status: number;
 };
 const BASE_URL = "http://localhost:3000";
+type InterceptorOptions = RequestInit & {
+  queries?: Record<string, string>;
+};
+
 /**
  * اینترسپتور اصلی API - فقط برای server-side
  * توکن رو از http-only cookie می‌خونه و هدر Authorization رو اضافه می‌کنه
  */
 export async function Interceptor<T>(
   url: string,
-  options: RequestInit = {}
+  options: InterceptorOptions = {}
 ): Promise<TInterceptorResponse<T>> {
   // خواندن توکن از کوکی http-only (امن‌ترین روش)
   const cookieStore = await cookies();
   const accessToken = cookieStore.get("access_token")?.value;
   url = BASE_URL + url;
+  if (options.queries) {
+    const searchParams = new URLSearchParams();
+    const dataList = Object.keys(options.queries);
+    dataList.forEach((el) => {
+      searchParams.set(el, options?.queries ? options?.queries[el] : "");
+    });
+    url = url + `?${searchParams.toString()}`;
+  }
+
   // هدرهای پیش‌فرض
   const headers: HeadersInit = {
     "Content-Type": "application/json",
@@ -79,7 +92,7 @@ export async function Interceptor<T>(
     //   redirect("/login?error=session_expired");
     // }
 
-    console.log(response)
+    console.log(response);
     // سایر خطاها (400, 403, 500 و ...)
     const errorMessage = data?.message || data?.error || "error";
 
@@ -93,7 +106,7 @@ export async function Interceptor<T>(
     console.error("[API Network Error]", url, error);
 
     return {
-      status:500
+      status: 500,
     };
   }
 }

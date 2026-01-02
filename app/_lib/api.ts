@@ -3,8 +3,8 @@ import { TScheduleCreareType, TScheduleType } from "../_types";
 import { TInterceptorResponse } from "../types";
 import { Interceptor } from "./interceptor";
 
-export const GetMySchedule = async (): Promise<TScheduleType[]> => {
-  const api = await Interceptor<TScheduleType[]>("/schedule/mine");
+export const GetMySchedule = async (queries:Record<string, string>): Promise<TScheduleType[]> => {
+  const api = await Interceptor<TScheduleType[]>("/schedule/mine",{queries});
   if (api.data?.data) {
     return api.data?.data;
   }
