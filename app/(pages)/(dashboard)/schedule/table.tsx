@@ -9,6 +9,7 @@ import { OptimisticAction } from "./optimisticAction";
 import CreateSchedule from "./createSchedule";
 import { Button } from "@/components/ui/button";
 import EditSchedule from "./editSchedule";
+import CustomFilter from "@/app/_components/customFilter";
 
 type Props = {
   data: TScheduleType[];
@@ -25,9 +26,7 @@ const Table = ({ data }: Props) => {
         <CreateSchedule
           onCreate={(val) => addOptimistic({ payload: val, type: "create" })}
         />
-        <Button className=" cursor-pointer " variant={"secondary"}>
-          Filter
-        </Button>
+        <CustomFilter/>
       </div>
       <CustomTable
         data={optimisticSchedules}
