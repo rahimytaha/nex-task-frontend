@@ -1,10 +1,16 @@
-import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
+import { Button } from "@/components/ui/button";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 
-import  { useState } from 'react'
-import FilterForm from '../forms/filterForm';
+import { useState } from "react";
+import FilterForm from "../forms/filterForm";
 
-type Props = {}
+type Props = {};
 
 const CustomFilter = (props: Props) => {
   const [open, setOpen] = useState<boolean>(false);
@@ -20,11 +26,10 @@ const CustomFilter = (props: Props) => {
         <SheetHeader>
           <SheetTitle>Filter Data</SheetTitle>
         </SheetHeader>
-        <FilterForm/>
-        {/* <CreateScheduleForm onCreate={onCreate} setOpen={(arg)=>setOpen(arg)}/> */}
+        <FilterForm inputs={[{ name: "query", text: "Name" }]} />
       </SheetContent>
     </Sheet>
   );
-}
+};
 
-export default CustomFilter
+export default CustomFilter;
