@@ -1,4 +1,4 @@
-import React, { FormEvent } from "react";
+
 import CustomInput from "../../common/customInput";
 import { Button } from "@/components/ui/button";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -15,7 +15,7 @@ const FilterForm = ({ inputs }: Props) => {
   const searchParams = useSearchParams();
   const router = useRouter();
   const FilterFormAction = async (formData: FormData) => {
-    const url = new URLSearchParams();
+    const url = new URLSearchParams(searchParams);
     const data = Object.fromEntries(formData) as Record<string, string>;
     const dataList = Object.keys(data);
     dataList.forEach((el) => {
