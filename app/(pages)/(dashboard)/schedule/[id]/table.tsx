@@ -6,13 +6,14 @@ import { Fragment, useOptimistic } from "react";
 import CreateTask from "./createTask";
 import EditTask from "./editTask";
 import { OptimisticAction } from "../optimisticAction";
+import DeleteTask from "./deleteTask";
 
 type Props = {
   scheduleId: number;
   data: TTaskType[];
 };
 
-const Table = ({ data, scheduleId, onUpdate }: Props) => {
+const Table = ({ data, scheduleId }: Props) => {
   const [optimisticData, addOptimistic] = useOptimistic(data, OptimisticAction);
   return (
     <Fragment>
@@ -34,7 +35,8 @@ const Table = ({ data, scheduleId, onUpdate }: Props) => {
             header: "Actions",
             key: "actions" as keyof TTaskType,
             render: (val, row) => (
-              <div>
+              <div className="flex gap-1 ">
+                <DeleteTask onDelete={()=>addOptimistic({payload:row.id,type:"delete"})} id={row.id} />
                 <EditTask
                   scheduleId={scheduleId}
                   onUpdate={(e) =>
