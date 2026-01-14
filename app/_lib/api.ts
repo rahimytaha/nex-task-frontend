@@ -40,7 +40,14 @@ export const UpdateScheduleApi = async (
   return api;
 };
 
-export const ScheduleById = async (id:number) => {
-  const api = await Interceptor<TScheduleType>(`/schedule/byId/${id}`)
-  return api
+export const ScheduleById = async (id: number) => {
+  const api = await Interceptor<TScheduleType>(`/schedule/byId/${id}`);
+  return api;
+};
+
+export const TaskByScheduleId = async (scheduleId: number) => {
+  const api = await Interceptor<TScheduleType[]>(
+    `/task/base/mine/${scheduleId}`
+  );
+  return api;
 };
