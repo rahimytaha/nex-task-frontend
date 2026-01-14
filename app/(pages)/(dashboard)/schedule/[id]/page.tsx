@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { redirect } from "next/navigation";
 import React from "react";
 import EditSchedule from "../editSchedule";
+import Table from "./table";
 
 const page = async ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = await params;
@@ -23,6 +24,9 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
         </div>
         <EditSchedule data={scheduleData} trigger={true} />
       </header>
+      <main>
+        <Table />
+      </main>
     </div>
   );
 };
