@@ -1,4 +1,3 @@
-
 import { ScheduleById } from "@/app/_lib/api";
 import { Button } from "@/components/ui/button";
 import { redirect } from "next/navigation";
@@ -25,7 +24,7 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
         <EditSchedule data={scheduleData} trigger={true} />
       </header>
       <main>
-        <Table />
+        <Table data={[]} scheduleId={Number(id)} />
       </main>
     </div>
   );

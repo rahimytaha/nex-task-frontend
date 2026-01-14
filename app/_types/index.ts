@@ -4,12 +4,16 @@ export type TScheduleType = {
   description: string;
   time?: string;
 };
-export type TTaskType ={
-  id:number
-  name:string
-  description:string
-  iconAddress?:string
-}
+export type TTaskType = {
+  id: number;
+  name: string;
+  description: string;
+  iconAddress?: string;
+};
 
-export type TScheduleCreareType =Omit<TScheduleType,"id">
-export type TTaskCreateType =Omit<TTaskType,"id">
+export type TScheduleCreareType = Omit<TScheduleType, "id">;
+export type TTaskCreateType = {
+  name: string;
+  description: string;
+  scheduleId: number;
+};

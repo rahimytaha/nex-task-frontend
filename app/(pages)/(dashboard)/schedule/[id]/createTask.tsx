@@ -17,11 +17,11 @@ const CreateTask = ({onCreate,scheduleId}:{onCreate:(payload:TScheduleCreareType
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
-        <Button variant="default" className="cursor-pointer" >Create Schedule</Button>
+        <Button variant="default" className="cursor-pointer" >Create Task</Button>
       </SheetTrigger>
       <SheetContent>
         <SheetHeader>
-          <SheetTitle>Create Schedule</SheetTitle>
+          <SheetTitle>Create Task</SheetTitle>
         </SheetHeader>
         <CreateTaskForm  scheduleId={scheduleId} onCreate={onCreate} setOpen={(arg)=>setOpen(arg)}/>
       </SheetContent>
