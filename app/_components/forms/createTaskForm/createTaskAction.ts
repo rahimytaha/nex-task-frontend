@@ -36,5 +36,5 @@ export const CreateTaskAction = async (
     method: "POST",
   });
   revalidatePath("/schedule/" + scheduleId);
-  return { message: "task successfully added", success: false };
+  return { message: "task successfully added", success: true };
 };
