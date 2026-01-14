@@ -3,8 +3,10 @@ import { TScheduleCreareType, TScheduleType } from "../_types";
 import { TInterceptorResponse } from "../types";
 import { Interceptor } from "./interceptor";
 
-export const GetMySchedule = async (queries:Record<string, string>): Promise<TScheduleType[]> => {
-  const api = await Interceptor<TScheduleType[]>("/schedule/mine",{queries});
+export const GetMySchedule = async (
+  queries: Record<string, string>
+): Promise<TScheduleType[]> => {
+  const api = await Interceptor<TScheduleType[]>("/schedule/mine", { queries });
   if (api.data?.data) {
     return api.data?.data;
   }
@@ -33,7 +35,12 @@ export const UpdateScheduleApi = async (
 ): Promise<TInterceptorResponse<Boolean>> => {
   const api = await Interceptor<Boolean>(`/schedule/update/${data.id}`, {
     method: "PUT",
-    body: JSON.stringify({name:data.name,description:data.description}),
+    body: JSON.stringify({ name: data.name, description: data.description }),
   });
   return api;
+};
+
+export const ScheduleById = async (id:number) => {
+  const api = await Interceptor<TScheduleType>(`/schedule/byId/${id}`)
+  return api
 };
