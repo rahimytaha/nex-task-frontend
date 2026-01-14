@@ -20,9 +20,9 @@ const CreateTaskForm = ({ setOpen, onCreate, scheduleId }: Props) => {
     if (validate.success) {
       onCreate({ description, name, scheduleId });
     }
-    // console.log("first");
     formAction(formData);
   };
+  
   return (
     <form className="mx-2  " action={handleSubmit}>
       <input name="scheduleId" type="hidden" value={scheduleId} />
