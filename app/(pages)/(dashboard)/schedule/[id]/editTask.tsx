@@ -2,10 +2,10 @@ import React from 'react'
 
 type Props = {}
 
-const editTask = (props: Props) => {
+const EditTask = (props: Props) => {
   return (
-    <div>editTask</div>
+    <div>EditTask</div>
   )
 }
 
-export default editTask
+export default EditTask

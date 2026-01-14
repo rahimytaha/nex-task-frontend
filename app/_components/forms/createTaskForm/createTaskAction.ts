@@ -2,6 +2,7 @@
 
 import { Interceptor } from "@/app/_lib/interceptor";
 import { CreateTaskSchema } from "@/app/_lib/zod-schemas";
+import { revalidatePath } from "next/cache";
 import { z } from "zod";
 
 type ActionState = {
@@ -34,5 +35,6 @@ export const CreateTaskAction = async (
     }),
     method: "POST",
   });
+  revalidatePath("/schedule/" + scheduleId);
   return { message: "task successfully added", success: false };
 };
