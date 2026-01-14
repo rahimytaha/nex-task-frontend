@@ -33,9 +33,9 @@ const Table = ({ data, scheduleId }: Props) => {
           {
             header: "Actions",
             key: "actions" as keyof TTaskType,
-            render: () => (
+            render: (val,row) => (
               <div>
-                <EditTask />
+                <EditTask  onUpdate={alert} data={row}/>
               </div>
             ),
           },
