@@ -12,7 +12,7 @@ type Props = {
   data: TTaskType[];
 };
 
-const Table = ({ data, scheduleId }: Props) => {
+const Table = ({ data, scheduleId, onUpdate }: Props) => {
   const [optimisticData, addOptimistic] = useOptimistic(data, OptimisticAction);
   return (
     <Fragment>
@@ -33,9 +33,15 @@ const Table = ({ data, scheduleId }: Props) => {
           {
             header: "Actions",
             key: "actions" as keyof TTaskType,
-            render: (val,row) => (
+            render: (val, row) => (
               <div>
-                <EditTask  onUpdate={alert} data={row}/>
+                <EditTask
+                  scheduleId={scheduleId}
+                  onUpdate={(e) =>
+                    addOptimistic({ payload: e, type: "update" })
+                  }
+                  data={row}
+                />
               </div>
             ),
           },

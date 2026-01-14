@@ -28,7 +28,7 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
   }
   const scheduleData = schedule.data.data;
   const taskData = tasks.data.data;
-  console.log(taskData)
+  // console.log(taskData)
 
   return (
     <div>

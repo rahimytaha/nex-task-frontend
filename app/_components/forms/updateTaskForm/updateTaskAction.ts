@@ -13,10 +13,11 @@ type ActionState = {
   success?: boolean;
   message?: string;
 };
-export const CreateTaskAction = async (
+export const UpdateTaskAction = async (
   state: ActionState,
   formdata: FormData
 ): Promise<ActionState> => {
+  const id = formdata.get("id") as string;
   const scheduleId = formdata.get("scheduleId") as string;
   const name = formdata.get("name") as string;
   const description = formdata.get("description") as string;
@@ -27,14 +28,15 @@ export const CreateTaskAction = async (
       errors: z.flattenError(validate.error).fieldErrors,
     };
   }
-  const api = await Interceptor("/task/base/create", {
+
+  const api = await Interceptor(`/task/base/update/${id}`, {
     body: JSON.stringify({
-      scheduleId: Number(scheduleId),
       name,
       description: description != "" ? description : undefined,
     }),
-    method: "POST",
+    method: "PUT",
   });
+
   revalidatePath("/schedule/" + scheduleId);
   return { message: "task successfully added", success: true };
 };

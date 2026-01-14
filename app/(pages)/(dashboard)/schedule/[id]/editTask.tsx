@@ -9,15 +9,18 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Bolt } from "lucide-react";
+import { useState } from "react";
 
 type Props = {
   onUpdate: (data: TTaskType) => void;
   data: TTaskType;
+  scheduleId: number;
 };
 
-const EditTask = ({ data, onUpdate }: Props) => {
+const EditTask = ({ data, scheduleId, onUpdate }: Props) => {
+  const [isOpen,setIsOpen]=useState<boolean>(false)
   return (
-    <Sheet>
+    <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetTrigger asChild>
         <Bolt
           className="opacity-70  cursor-pointer  hover:opacity-100 duration-100"
@@ -27,9 +30,16 @@ const EditTask = ({ data, onUpdate }: Props) => {
       <SheetContent>
         <SheetHeader>
           <SheetTitle>Edit Task</SheetTitle>
-          <SheetDescription className="text-primary ">Edit Task {data.name}</SheetDescription>
+          <SheetDescription className="text-primary ">
+            Edit Task {data.name}
+          </SheetDescription>
         </SheetHeader>
-        <UpdateTaskForm setOpen={alert} onUpdate={onUpdate} data={data} />
+        <UpdateTaskForm
+          scheduleId={scheduleId}
+          setOpen={setIsOpen}
+          onUpdate={onUpdate}
+          data={data}
+        />
       </SheetContent>
     </Sheet>
   );
