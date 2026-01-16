@@ -51,3 +51,9 @@ export const TaskByScheduleId = async (scheduleId: number) => {
   );
   return api;
 };
+export const DeleteTaskApi = async (id:number)=>{
+   const api = await Interceptor(
+    `/task/base/byId/${id}`,{method:"DELETE"}
+  );
+  return api; 
+}

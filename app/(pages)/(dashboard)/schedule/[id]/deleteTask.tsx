@@ -1,19 +1,20 @@
 import { CircleX } from "lucide-react";
 import React, { useTransition } from "react";
 import { toast } from "sonner";
+import { DeleteTaskAction } from "./deleteTaskAction";
 
 type Props = {
-    id:number
-    onDelete:()=>void
+  id: number;
+  onDelete: () => void;
 };
 
-const DeleteTask = ({onDelete, id}: Props) => {
+const DeleteTask = ({ onDelete, id }: Props) => {
   const [isPending, startTransition] = useTransition();
   const handleSubmit = () => {
     if (!isPending) {
       startTransition(() => {
-        onDelete()
-        toast.promise(fetch("0.0.0.0"), {
+        onDelete();
+        toast.promise(DeleteTaskAction(id), {
           loading: "Deleting Task",
           success: "Task deleted successfully",
           error: () => "Error! Could not delete.",
