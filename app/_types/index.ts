@@ -17,3 +17,10 @@ export type TTaskCreateType = {
   description: string;
   scheduleId: number;
 };
+
+export type TTaskCheck = {
+  "1": boolean;
+  "2": boolean;
+  "3": boolean;
+  day: Date;
+};

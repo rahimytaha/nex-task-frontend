@@ -1,5 +1,5 @@
 "use server";
-import { TScheduleCreareType, TScheduleType } from "../_types";
+import { TScheduleCreareType, TScheduleType, TTaskCheck } from "../_types";
 import { TInterceptorResponse } from "../types";
 import { Interceptor } from "./interceptor";
 
@@ -56,4 +56,8 @@ export const DeleteTaskApi = async (id:number)=>{
     `/task/base/byId/${id}`,{method:"DELETE"}
   );
   return api; 
+}
+export const GetTasksCheck =async (scheduleId:number)=>{
+  const api = await Interceptor<TTaskCheck[]>(`/task/check/${scheduleId}`)
+return api
 }
