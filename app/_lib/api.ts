@@ -51,13 +51,17 @@ export const TaskByScheduleId = async (scheduleId: number) => {
   );
   return api;
 };
-export const DeleteTaskApi = async (id:number)=>{
-   const api = await Interceptor(
-    `/task/base/byId/${id}`,{method:"DELETE"}
-  );
-  return api; 
-}
-export const GetTasksCheck =async (scheduleId:number)=>{
-  const api = await Interceptor<TTaskCheck[]>(`/task/check/${scheduleId}`)
-return api
-}
+export const DeleteTaskApi = async (id: number) => {
+  const api = await Interceptor(`/task/base/byId/${id}`, { method: "DELETE" });
+  return api;
+};
+export const GetTasksCheck = async (scheduleId: number) => {
+  const api = await Interceptor<TTaskCheck[]>(`/task/check/${scheduleId}`);
+  return api;
+};
+
+export const CheckTask = async (taskId: number) => {
+  const api = await Interceptor(`/task/check/${taskId}`,{method:"Patch"});
+  console.log(api)
+  return api;
+};

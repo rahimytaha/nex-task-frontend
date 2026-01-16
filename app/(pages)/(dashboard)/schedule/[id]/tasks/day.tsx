@@ -1,5 +1,6 @@
 import { TTaskCheck } from "@/app/_types";
 import React from "react";
+import { CheckAction } from "./checkAction";
 
 type Props = {
   day: TTaskCheck;
@@ -15,7 +16,12 @@ const Day = ({ day }: Props) => {
   return (
     <div>
       {tasksChartData.map((el) => (
-        <div>{el.id}-{el.status?"done":"not yet"}</div>
+        <form action={CheckAction}>
+          <input type="hidden" value={el.id} name="taskId" />
+          <button>
+            {el.id}-{el.status ? "done" : "not yet"}
+          </button>
+        </form>
       ))}
     </div>
   );
